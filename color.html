@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Therapy</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="color.js" defer></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            transition: background-color 1s ease;
+        }
+
+        .color-container {
+            margin: 50px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .color-box {
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Choose a Color to Relax</h1>
+
+    <div class="color-container">
+        <div class="color-box" style="background-color: #a5d6a7;" onclick="changeColor('#a5d6a7')"></div>
+        <div class="color-box" style="background-color: #81d4fa;" onclick="changeColor('#81d4fa')"></div>
+        <div class="color-box" style="background-color: #ffcc80;" onclick="changeColor('#ffcc80')"></div>
+        <div class="color-box" style="background-color: #ffab91;" onclick="changeColor('#ffab91')"></div>
+    </div>
+
+</body>
+</html>

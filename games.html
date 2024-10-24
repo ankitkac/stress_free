@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Relaxation Game</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        /* Breathing Exercise */
+        .breathing-exercise {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: lightblue;
+            animation: breathe 4s infinite alternate;
+        }
+
+        @keyframes breathe {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(2);
+            }
+        }
+
+        /* Color Matching Game */
+        .color-box {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #targetColor {
+            margin: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .section {
+                padding: 10px;
+            }
+
+            .circle, .color-box {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mind Relaxation Game</h1>
+
+    <!-- Breathing Exercise Section -->
+    <div class="section breathing-exercise">
+        <h2>Breathe In... Breathe Out...</h2>
+        <div class="circle"></div>
+    </div>
+
+    <!-- Color Matching Game Section -->
+    <div class="section">
+        <h2>Color Match Game</h2>
+        <p>Try to click on the box that matches this color:</p>
+        <div id="targetColor" class="color-box"></div>
+
+        <div id="gameBoard">
+            <!-- Color boxes will be generated here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        /* Color Matching Game Logic */
+        const targetColorDiv = document.getElementById('targetColor');
+        const gameBoard = document.getElementById('gameBoard');
+        let targetColor;
+
+        function randomColor() {
+            return 'rgb(' + Math.floor(Math.random() * 256) + ',' + 
+                            Math.floor(Math.random() * 256) + ',' + 
+                            Math.floor(Math.random() * 256) + ')';
+        }
+
+        function startGame() {
+            // Set the target color
+            targetColor = randomColor();
+            targetColorDiv.style.backgroundColor = targetColor;
+
+            // Clear previous game board
+            gameBoard.innerHTML = '';
+
+            // Generate random color boxes
+            for (let i = 0; i < 6; i++) {
+                const colorBox = document.createElement('div');
+                colorBox.classList.add('color-box');
+                colorBox.style.backgroundColor = randomColor();
+
+                // Add click event to check if it's the right color
+                colorBox.addEventListener('click', function() {
+                    if (colorBox.style.backgroundColor === targetColor) {
+                        alert('You matched the color!');
+                        startGame(); // Start a new round
+                    } else {
+                        alert('Try again!');
+                    }
+                });
+
+                gameBoard.appendChild(colorBox);
+            }
+        }
+
+        // Start the game when the page loads
+        startGame();
+    </script>
+
+</body>
+</html>

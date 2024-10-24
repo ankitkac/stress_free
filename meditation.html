@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation & Sounds</title>
+    <script src="medition.js" defer></script>
+    <style>
+        body {
+            background-color: #eef4f9;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .meditation-container {
+            margin-top: 50px;
+        }
+
+        .sound-box {
+            margin: 20px;
+            padding: 20px;
+            background-color: #00bfff;
+            border-radius: 10px;
+            display: inline-block;
+            width: 250px;
+            text-align: center;
+            color: white;
+        }
+
+        .sound-box:hover {
+            background-color: #007acc;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="meditation-container">
+        <div class="sound-box" onclick="playSound('forest')" oncanplay="playSound">Play Forest Sound
+            <audio  id="musicPlayer">
+                <source  src="forest-163012.mp3" type="audio/mp3">
+            </audio>
+        </div>
+        <div class="sound-box" onclick="playSound('ocean')">Play Ocean Sound</div>
+    </div>
+
+    <script>
+        function playSound(type) {
+            if (type === 'forest') {
+                alert('Playing Forest Sound...');
+            } else if (type === 'ocean') {
+                alert('Playing Ocean Sound...');
+            }
+        }
+    </script>
+</body>
+</html>
